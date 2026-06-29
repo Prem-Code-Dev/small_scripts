@@ -1,0 +1,72 @@
+from tkinter import *
+import random as rdm
+op_lst = rdm.choice(['+','-','*'])
+op = op_lst
+num1 = rdm.randint(5,50)
+num2 = rdm.randint(5,50)
+show = op_lst
+if op_lst == '*':
+    show = 'x'
+win = Tk()
+entry = Entry(win,font=('',20,'bold'))
+win.title('MATH GAME')
+win.geometry('450x600')
+def backspace():
+    entry.delete(int(len(entry.get())-1))
+def result(value):
+    entry.insert(END, value)
+res = ''
+if num1 < num2:
+    res = eval(f'{num2}{op}{num1}')
+    print(res)
+    label1 = Label(win, text=num2, font=('', 50, 'bold'))
+    label2 = Label(win, text=show, font=('', 50, 'bold'))
+    label3 = Label(win, text=num1, font=('', 50, 'bold'))
+else:
+    res = eval(f'{num1}{op}{num2}')
+    print(res)
+    label1 = Label(win, text=num1, font=('', 50, 'bold',))
+    label2 = Label(win, text=show, font=('', 50, 'bold'))
+    label3 = Label(win, text=num2, font=('', 50, 'bold'))
+label_ans = Label(win, text='Correct!', font=('', 40, 'bold'))
+def equal():
+    global res
+    if entry.get() == '':
+        label_ans.config(text='Enter Answer!',fg='orange')
+        label_ans.place(x=60, y=80)
+    elif res == int(entry.get()):
+        label_ans.config(text='Correct!',fg='#00ff00')
+        label_ans.place(x=130, y=80)
+    else:
+        label_ans.config(text='Wrong!',fg='red')
+        label_ans.place(x=130, y=80)
+button_eq = Button(win, text='=',font=('',20,'bold'),bg='light gray',padx=38,pady=22.4,command= equal)
+button1 = Button(win, text='1',font=('',30,'bold'),bg='light gray',padx=30,pady=10,command=lambda: result('1'))
+button2 = Button(win, text='2',font=('',30,'bold'),bg='light gray',padx=30,pady=10,command=lambda: result('2'))
+button3 = Button(win, text='3',font=('',30,'bold'),bg='light gray',padx=30,pady=10,command=lambda: result('3'))
+button4 = Button(win, text='4',font=('',30,'bold'),bg='light gray',padx=30,pady=10,command=lambda: result('4'))
+button5 = Button(win, text='5',font=('',30,'bold'),bg='light gray',padx=30,pady=10,command=lambda: result('5'))
+button6 = Button(win, text='6',font=('',30,'bold'),bg='light gray',padx=30,pady=10,command=lambda: result('6'))
+button7 = Button(win, text='7',font=('',30,'bold'),bg='light gray',padx=30,pady=10,command=lambda: result('7'))
+button8 = Button(win, text='8',font=('',30,'bold'),bg='light gray',padx=30,pady=10,command=lambda: result('8'))
+button9 = Button(win, text='9',font=('',30,'bold'),bg='light gray',padx=30,pady=10,command=lambda: result('9'))
+button0 = Button(win, text='0',font=('',30,'bold'),bg='light gray',padx=30,pady=10,command=lambda: result('0'))
+buttonBS = Button(win, text='C',font=('',30,'bold'),bg='light gray',padx=26,pady=10,command= backspace)
+
+buttonBS.place(x=50,y=500)
+button_eq.place(x=280,y=500)
+entry.place(x=70,y=150)
+label1.place(x=70,y=10)
+label2.place(x=200,y=10)
+label3.place(x=280,y=10)
+button1.place(x=50,y=200)
+button2.place(x=165,y=200)
+button3.place(x=280,y=200)
+button4.place(x=50,y=300)
+button5.place(x=165,y=300)
+button6.place(x=280,y=300)
+button7.place(x=50,y=400)
+button8.place(x=165,y=400)
+button9.place(x=280,y=400)
+button0.place(x=165,y=500)
+win.mainloop()
