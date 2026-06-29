@@ -1,0 +1,100 @@
+from tkinter import *
+
+def click(value):
+    if value == 'clear':
+        entry.delete(0,END)
+        label2.config(text=0, fg='#00ff00')
+    elif value == 'backspace':
+        entry.delete(int(len(entry.get())-1))
+    else:
+        if 'Error!' == entry.get():
+            entry.delete(0, END)
+            entry.insert(END, value)
+        else:
+            entry.insert(END,value)
+
+
+def result():
+    try:
+        if entry.get() == '':
+            label2.config(text='prem', fg='#00ff00')
+        res = eval(entry.get())
+        entry.delete(0, END)
+        label2.config(text=res, fg='#00ff00')
+    except SyntaxError:
+        entry.delete(0, END)
+        label2.config(text='Error!!',fg='red')
+
+win = Tk()
+win.title('Calculator')
+win.geometry('450x600')
+win.config(bg='white')
+
+entry = Entry(win,font=('',30),bg='light gray',fg='black')
+print('prem')
+print()
+print(entry.get())
+print('prem')
+
+label1= Label(win, text='CALCULATOR', font=('Bodoni MT Black', 30, 'bold'), fg= 'Black', bg='white')
+label2= Label(win, text= 0, font=('Arial',40,'bold'),fg='#00ff00',bg='white')
+
+buttonadd = Button(win,text='+',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click('+'),activeforeground='black',activebackground='gray',padx=50,pady=10)
+buttonsub = Button(win,text='- ',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click('-'),activeforeground='black',activebackground='gray',padx=50,pady=10)
+buttonmult = Button(win,text='* ',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click('*'),activeforeground='black',activebackground='gray',padx=50,pady=10)
+buttondiv = Button(win,text='/',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click('/'),activeforeground='black',activebackground='gray',padx=30,pady=10)
+button1 = Button(win,text='1',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click(1),activeforeground='black',activebackground='gray',padx=25,pady=10)
+button2 = Button(win,text='2',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click(2),activeforeground='black',activebackground='gray',padx=25,pady=10)
+button3 = Button(win,text='3',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click(3),activeforeground='black',activebackground='gray',padx=25,pady=10)
+button4 = Button(win,text='4',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click(4),activeforeground='black',activebackground='gray',padx=25,pady=10)
+button5 = Button(win,text='5',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click(5),activeforeground='black',activebackground='gray',padx=25,pady=10)
+button6 = Button(win,text='6',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click(6),activeforeground='black',activebackground='gray',padx=25,pady=10)
+button7 = Button(win,text='7',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click(7),activeforeground='black',activebackground='gray',padx=25,pady=10)
+button8 = Button(win,text='8',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click(8),activeforeground='black',activebackground='gray',padx=25,pady=10)
+button9 = Button(win,text='9',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click(9),activeforeground='black',activebackground='gray',padx=25,pady=10)
+button0 = Button(win,text='0',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click(0),activeforeground='black',activebackground='gray',padx=25,pady=10)
+buttonE = Button(win,text='=',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=result,activeforeground='black',activebackground='gray',padx=50,pady=10)
+buttonBS = Button(win,text='<-',font=('Arial', 20, 'bold'),fg='black',bg='gray',
+                command=lambda: click('backspace'),activeforeground='black',activebackground='gray',padx=20,pady=5)
+buttonclear = Button(win,text='Clear',font=('Arial', 20,),fg='black',bg='gray',
+                command=lambda:click('clear'),activeforeground='black',activebackground='gray',padx=1,pady=10)
+
+label1.pack()
+entry.place(x=0,y=150)
+
+button1.place(x=0,y=200)
+button2.place(x=100,y=200)
+button3.place(x=200,y=200)
+button4.place(x=0,y=285)
+button5.place(x=100,y=285)
+button6.place(x=200,y=285)
+button7.place(x=0,y=370)
+button8.place(x=100,y=370)
+button9.place(x=200,y=370)
+button0.place(x=100,y=455)
+buttonE.place(x=300,y=200)
+buttonBS.place(x=350,y=70)
+buttonadd.place(x=300,y=285)
+buttonsub.place(x=300,y=370)
+buttonmult.place(x=300,y=455)
+buttondiv.place(x=200,y=455)
+buttonclear.place(x=0,y=455)
+label2.place(x=0,y=80)
+
+
+win.mainloop()
