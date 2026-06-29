@@ -8,6 +8,7 @@ This repository for small beginner projects,and forgive me if there anything wro
 2.#Dice Game,
     this is a simple terminal Dice Game,
     this can play with two players and play with bot
+    
 3.#Math Game,
     this is a math game,
     you have to enter corect answer,
